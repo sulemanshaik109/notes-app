@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import "../styles.css"
 
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+const API_BASE_URL = "https://suleman-notes-app.onrender.com"
 
 const NoteForm = ({ onNoteSaved }) => {
   const [title, setTitle] = useState('');
@@ -11,7 +11,7 @@ const NoteForm = ({ onNoteSaved }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${API_BASE_URL}/notes`, { title, description });
+      await axios.post(`${API_BASE_URL}/api/notes`, { title, description });
       onNoteSaved();
       setTitle('');
       setDescription('');

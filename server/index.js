@@ -10,13 +10,13 @@ app.use(express.static(path.join(__dirname, 'build')));
 app.use(express.json());
 
 const corsOptions = {
-  origin: ['http://localhost:3000', 'https://suleman-notes-app.netlify.app'],
+  origin: ['https://suleman-notes-app.netlify.app'],
   optionsSuccessStatus: 200
 };
 
 app.use(cors(corsOptions));
 
-app.use('/api', routes);
+app.use('/', routes);
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));

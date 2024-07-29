@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require('./database');
 
 // Create a new note
-router.post('/notes', (req, res) => {
+router.post('/api/notes', (req, res) => {
   const { title, description } = req.body;
   if (!title || !description) {
     return res.status(400).json({ message: 'Title and description are required' });
@@ -23,7 +23,7 @@ router.post('/notes', (req, res) => {
 });
 
 // List all notes
-router.get('/notes', (req, res) => {
+router.get('/api/notes', (req, res) => {
   db.all('SELECT * FROM notes', [], (err, rows) => {
     if (err) {
       console.error('Error fetching notes:', err);
@@ -34,7 +34,7 @@ router.get('/notes', (req, res) => {
 });
 
 // Delete a note
-router.delete('/notes/:id', (req, res) => {
+router.delete('/api/notes/:id', (req, res) => {
   const { id } = req.params;
   db.run('DELETE FROM notes WHERE id = ?', id, function (err) {
     if (err) {

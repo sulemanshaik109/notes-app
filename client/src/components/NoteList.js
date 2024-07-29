@@ -3,14 +3,14 @@ import axios from 'axios';
 import { MdDeleteOutline } from "react-icons/md";
 import "../styles.css"
 
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+const API_BASE_URL = "https://suleman-notes-app.onrender.com"
 
 const NoteList = ({ onNoteDeleted }) => {
   const [notes, setNotes] = useState([]);
 
   const fetchNotes = async () => {
     try {
-      const response = await axios.get(`${API_BASE_URL}/notes`);
+      const response = await axios.get(`${API_BASE_URL}/api/notes`);
       setNotes(response.data);
     } catch (error) {
       console.error('Error fetching notes:', error);
@@ -19,7 +19,7 @@ const NoteList = ({ onNoteDeleted }) => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${API_BASE_URL}/notes/${id}`);
+      await axios.delete(`${API_BASE_URL}api/notes/${id}`);
       onNoteDeleted();
     } catch (error) {
       console.error('Error deleting note:', error);
