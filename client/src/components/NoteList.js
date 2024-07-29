@@ -19,7 +19,7 @@ const NoteList = ({ onNoteDeleted }) => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${API_BASE_URL}api/notes/${id}`);
+      await axios.delete(`${API_BASE_URL}/api/notes/${id}`);
       onNoteDeleted();
     } catch (error) {
       console.error('Error deleting note:', error);
