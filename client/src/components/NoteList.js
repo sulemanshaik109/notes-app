@@ -10,7 +10,7 @@ const NoteList = ({ onNoteDeleted }) => {
 
   const fetchNotes = async () => {
     try {
-      const response = await axios.get(`${API_BASE_URL}/api/notes`);
+      const response = await axios.get(`${API_BASE_URL}/notes`);
       setNotes(response.data);
     } catch (error) {
       console.error('Error fetching notes:', error);
@@ -19,7 +19,7 @@ const NoteList = ({ onNoteDeleted }) => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${API_BASE_URL}api/notes/${id}`);
+      await axios.delete(`${API_BASE_URL}/notes/${id}`);
       onNoteDeleted();
     } catch (error) {
       console.error('Error deleting note:', error);

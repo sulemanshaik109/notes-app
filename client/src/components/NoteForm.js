@@ -11,7 +11,7 @@ const NoteForm = ({ onNoteSaved }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${API_BASE_URL}/api/notes`, { title, description });
+      await axios.post(`${API_BASE_URL}/notes`, { title, description });
       onNoteSaved();
       setTitle('');
       setDescription('');
